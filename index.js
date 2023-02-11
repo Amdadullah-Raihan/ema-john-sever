@@ -40,9 +40,17 @@ async function run(){
             if(page){
                  products = await cursor.skip(page*size).limit(parseInt(size)).toArray();
             }
+            else{
+                products = await cursor.toArray()
+            }
 
             
-        res.send({count, products})
+        res.send(
+            {
+             count,
+             products
+            }
+             )
         })
 
     }
